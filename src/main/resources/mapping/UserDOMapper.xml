@@ -43,6 +43,9 @@
     delete from user_info
     where id = #{id,jdbcType=INTEGER}
   </delete>
+
+
+  <!--插入字段为null值，null填充数据库-->
   <insert id="insert" parameterType="com.miaoshaproject.dataobject.UserDO">
     <!--
       WARNING - @mbg.generated
@@ -56,6 +59,8 @@
       #{age,jdbcType=INTEGER}, #{telphone,jdbcType=VARCHAR}, #{registerMode,jdbcType=VARCHAR}, 
       #{thirdPartyId,jdbcType=VARCHAR})
   </insert>
+
+  <!--插入的字段为null值，依赖数据库的默认值-->
   <insert id="insertSelective" parameterType="com.miaoshaproject.dataobject.UserDO">
     <!--
       WARNING - @mbg.generated

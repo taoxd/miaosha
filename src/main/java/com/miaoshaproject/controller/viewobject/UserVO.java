@@ -51,4 +51,15 @@ public class UserVO {
     public void setTelphone(String telphone) {
         this.telphone = telphone;
     }
+
+    @Override
+    public String toString() {
+        return "UserVO{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", gender=" + gender +
+                ", age=" + age +
+                ", telphone='" + telphone + '\'' +
+                '}';
+    }
 }

@@ -99,4 +99,13 @@ public class UserPasswordDO {
     public void setUserId(Integer userId) {
         this.userId = userId;
     }
+
+    @Override
+    public String toString() {
+        return "UserPasswordDO{" +
+                "id=" + id +
+                ", encrptPassword='" + encrptPassword + '\'' +
+                ", userId=" + userId +
+                '}';
+    }
 }

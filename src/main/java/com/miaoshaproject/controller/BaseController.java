@@ -11,8 +11,15 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
-
+/**
+* @Description:    基类
+* @Author:         taoxudong
+* @CreateDate:     2019/8/23 17:01
+* @Version:        1.0
+*/
 public class BaseController {
+
+    public static final String CONTENT_TYPE_FORMED = "application/x-www-form-urlencoded";
 
     /**
      * 定义ExceptionHandler解决未被controller层吸收的exception
@@ -26,7 +33,7 @@ public class BaseController {
     @ResponseBody
     public Object handlerException(HttpServletRequest request, Exception ex) {
 
-        Map<String, Object> responseData = new HashMap<>();
+        Map<String, Object> responseData = new HashMap<>(16);
         if (ex instanceof BusinessException) {
             BusinessException businessException = (BusinessException) ex;
             responseData.put("errCode", businessException.getErrCode());

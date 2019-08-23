@@ -1,17 +1,17 @@
 package com.miaoshaproject.controller;
 
+import com.alibaba.druid.util.StringUtils;
 import com.miaoshaproject.controller.viewobject.UserVO;
 import com.miaoshaproject.error.BusinessException;
 import com.miaoshaproject.error.EmBusinessError;
 import com.miaoshaproject.response.CommonReturnType;
 import com.miaoshaproject.service.UserService;
 import com.miaoshaproject.service.model.UserModel;
+import org.apache.tomcat.util.security.MD5Encoder;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Random;
@@ -24,6 +24,8 @@ import java.util.Random;
  */
 @Controller("user")
 @RequestMapping("/user")
+//解决跨域
+@CrossOrigin
 public class UserController extends BaseController {
 
     @Autowired
@@ -37,11 +39,48 @@ public class UserController extends BaseController {
     private HttpServletRequest httpServletRequest;
 
     /**
+     * 用户注册接口
+     *
+     * @param telphone
+     * @param otpCode
+     * @param name
+     * @param gender
+     * @param age
+     * @param password
+     * @return
+     * @throws BusinessException
+     */
+    @RequestMapping(value = "/register", method = {RequestMethod.POST}, consumes = {CONTENT_TYPE_FORMED})
+    @ResponseBody
+    public CommonReturnType register(@RequestParam(name = "telphone") String telphone,
+                                     @RequestParam(name = "otpCode") String otpCode,
+                                     @RequestParam(name = "name") String name,
+                                     @RequestParam(name = "gender") Integer gender,
+                                     @RequestParam(name = "age") Integer age,
+                                     @RequestParam(name = "password") String password) throws BusinessException {
+        //验证手机号和对应的otpCode相符合
+        String inSessionOtpCode = (String) this.httpServletRequest.getAttribute(telphone);
+        if (!StringUtils.equals(otpCode, inSessionOtpCode)) {
+            throw new BusinessException(EmBusinessError.PARAMETER_VALIDATION_ERROR, "短信验证码不符合");
+        }
+        //用户的注册流程
+        UserModel userModel = new UserModel();
+        userModel.setName(name);
+        userModel.setGender(gender);
+        userModel.setAge(age);
+        userModel.setTelphone(telphone);
+        userModel.setRegisterMode("byphone");
+        userModel.setEncrptPassword(MD5Encoder.encode(password.getBytes()));
+        userService.register(userModel);
+        return CommonReturnType.create(null);
+    }
+
+    /**
      * 用户获取otp短信接口
      *
      * @param telphone
      */
-    @RequestMapping("/getOtp")
+    @RequestMapping(value = "/getotp", method = {RequestMethod.POST}, consumes = {CONTENT_TYPE_FORMED})
     @ResponseBody
     public CommonReturnType getOtp(@RequestParam(name = "telphone") String telphone) {
         //需要按照一定的规则生成OTP验证码
