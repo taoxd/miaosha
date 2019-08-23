@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller("user")
 @RequestMapping("/user")
-public class UserController {
+public class UserController extends BaseController {
 
     @Autowired
     private UserService userService;
@@ -53,4 +53,5 @@ public class UserController {
         BeanUtils.copyProperties(userModel, userVO);
         return userVO;
     }
+
 }
