@@ -6,8 +6,10 @@ CREATE TABLE `user_info` (
   `telphone` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `register_mode` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '' COMMENT '//byphone,bywechat,byalipay',
   `third_party_id` varchar(64) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `telphone_unique_index` (`telphone`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
 
 
 
@@ -16,4 +18,4 @@ CREATE TABLE `user_password` (
   `encrpt_password` varchar(128) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `user_id` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

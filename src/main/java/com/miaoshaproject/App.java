@@ -9,14 +9,17 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
 /**
- * Hello world!
+ * @Description: 启动类
+ * @Author: taoxudong
+ * @CreateDate: 2019/8/26 16:23
+ * @Version: 1.0
  */
 /*
 @EnableAutoConfiguration:
 将启动类当成自动化可以配置的Bean，并且能够可以开启整个工程基于Spring的自动化配置，开启自动装配
  */
-
 //@EnableAutoConfiguration
 @SpringBootApplication(scanBasePackages = {"com.miaoshaproject"})
 @RestController
