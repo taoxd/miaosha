@@ -99,4 +99,6 @@ public class ItemStockDO {
     public void setItemId(Integer itemId) {
         this.itemId = itemId;
     }
+
+
 }

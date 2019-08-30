@@ -198,4 +198,6 @@ public class ItemDO {
     public void setImgUrl(String imgUrl) {
         this.imgUrl = imgUrl == null ? null : imgUrl.trim();
     }
+
+
 }
