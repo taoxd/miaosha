@@ -1,5 +1,8 @@
 package com.miaoshaproject.dataobject;
 
+import lombok.ToString;
+
+@ToString
 public class ItemDO {
     /**
      *

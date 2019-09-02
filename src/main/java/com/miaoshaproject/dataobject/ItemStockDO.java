@@ -100,5 +100,12 @@ public class ItemStockDO {
         this.itemId = itemId;
     }
 
-
+    @Override
+    public String toString() {
+        return "ItemStockDO{" +
+                "id=" + id +
+                ", stock=" + stock +
+                ", itemId=" + itemId +
+                '}';
+    }
 }

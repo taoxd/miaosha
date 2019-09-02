@@ -22,6 +22,7 @@
     -->
     id, title, price, description, sales, img_url
   </sql>
+
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     <!--
       WARNING - @mbg.generated
@@ -33,6 +34,14 @@
     from item
     where id = #{id,jdbcType=INTEGER}
   </select>
+
+  <select id="listItem" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from item order by sales desc
+  </select>
+
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     <!--
       WARNING - @mbg.generated
