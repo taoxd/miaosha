@@ -1,10 +1,11 @@
 package com.miaoshaproject.error;
+
 /**
-* @Description:    错误枚举
-* @Author:         taoxudong
-* @CreateDate:     2019/8/27 10:45
-* @Version:        1.0
-*/
+ * @Description: 错误枚举
+ * @Author: taoxudong
+ * @CreateDate: 2019/8/27 10:45
+ * @Version: 1.0
+ */
 public enum EmBusinessError implements CommonError {
     //通用错误类型10001
     PARAMETER_VALIDATION_ERROR(10001, "参数不合法"),
@@ -13,6 +14,9 @@ public enum EmBusinessError implements CommonError {
     //20000开头为用户信息相关错误定义
     USER_NOT_EXIST(20001, "用户不存在"),
     USER_LOGIN_FAIL(20002, "用户手机号或密码不正确"),
+
+    //30000开头为交易信息错误定义
+    STOCK_NOT_ENOUGH(30001, "库存不足")
     ;
 
     EmBusinessError(int errCode, String errMsg) {
