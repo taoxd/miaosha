@@ -57,3 +57,17 @@ CREATE TABLE `sequence_info` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 INSERT INTO `sequence_info`(`name`, `current_value`, `step`) VALUES ('order_info', 0, 1);
+
+
+
+CREATE TABLE `promo` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `promo_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `start_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `item_id` int(11) NOT NULL DEFAULT '0',
+  `promo_item_price` double NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+INSERT INTO `promo`(`id`, `promo_name`, `start_date`, `item_id`, `promo_item_price`) VALUES (1, '小米手机抢购活动', '2019-09-04 17:30:05', 1, 200);
+
