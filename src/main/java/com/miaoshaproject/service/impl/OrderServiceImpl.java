@@ -38,7 +38,7 @@ public class OrderServiceImpl implements OrderService {
     private OrderDOMapper orderDOMapper;
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public OrderModel createOrder(Integer userId, Integer itemId, Integer amount) throws BusinessException {
         //1.校验下单状态，下单的商品是否存在，用户是否合法，购买的数量是否正确
         ItemModel itemModel = itemService.getItemById(itemId);
@@ -74,6 +74,9 @@ public class OrderServiceImpl implements OrderService {
 
         OrderDO orderDO = convertFromOrderModel(orderModel);
         orderDOMapper.insert(orderDO);
+
+        //加上商品的销量
+        itemService.increaseSales(itemId,amount);
 
         //4.返回前端
         return orderModel;
@@ -126,6 +129,8 @@ public class OrderServiceImpl implements OrderService {
         }
         OrderDO orderDO = new OrderDO();
         BeanUtils.copyProperties(orderModel, orderDO);
+        orderDO.setItemPrice(orderModel.getItemPrice().doubleValue());
+        orderDO.setOrderPrice(orderModel.getOrderPrice().doubleValue());
         return orderDO;
     }
 

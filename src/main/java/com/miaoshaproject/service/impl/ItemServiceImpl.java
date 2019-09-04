@@ -116,10 +116,16 @@ public class ItemServiceImpl implements ItemService {
         if (affectRow > 0) {
             //更新库存成功
             return true;
-        }else {
+        } else {
             //更新库存失败
             return false;
         }
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void increaseSales(Integer itemId, Integer amount) throws BusinessException {
+        itemDOMapper.increaseSales(itemId, amount);
     }
 
 
