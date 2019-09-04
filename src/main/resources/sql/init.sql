@@ -36,3 +36,24 @@ CREATE TABLE `user_password` (
   `user_id` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+CREATE TABLE `order_info` (
+  `id` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
+  `user_id` int(11) NOT NULL DEFAULT '0',
+  `item_id` int(11) NOT NULL DEFAULT '0',
+  `item_price` double NOT NULL DEFAULT '0',
+  `amount` int(11) NOT NULL DEFAULT '0',
+  `order_price` double NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+CREATE TABLE `sequence_info` (
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `current_value` int(11) NOT NULL DEFAULT '0',
+  `step` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+INSERT INTO `sequence_info`(`name`, `current_value`, `step`) VALUES ('order_info', 0, 1);
