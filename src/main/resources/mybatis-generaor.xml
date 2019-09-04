@@ -33,10 +33,7 @@
                enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"></table>
         <table tableName="user_password" domainObjectName="UserPasswordDO" enableCountByExample="false"
                enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"></table>-->
-        <table tableName="item" domainObjectName="ItemDO" enableCountByExample="false"
+        <table tableName="order_info" domainObjectName="OrderDO" enableCountByExample="false"
                enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"></table>
-        <table tableName="item_stock" domainObjectName="ItemStockDO" enableCountByExample="false"
-               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"></table>
-
     </context>
 </generatorConfiguration>
