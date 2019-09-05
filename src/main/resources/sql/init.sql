@@ -66,8 +66,10 @@ CREATE TABLE `promo` (
   `start_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `item_id` int(11) NOT NULL DEFAULT '0',
   `promo_item_price` double NOT NULL DEFAULT '0',
+  `end_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-INSERT INTO `promo`(`id`, `promo_name`, `start_date`, `item_id`, `promo_item_price`) VALUES (1, '小米手机抢购活动', '2019-09-04 17:30:05', 1, 200);
+INSERT INTO `promo`(`id`, `promo_name`, `start_date`, `item_id`, `promo_item_price`, `end_date`) VALUES (1, '小米手机抢购活动', '2019-09-04 17:30:05', 1, 200, '2019-09-05 15:34:40');
+
 

@@ -1,10 +1,11 @@
 package com.miaoshaproject.controller.viewobject;
 
-import lombok.ToString;
+import lombok.Data;
+import org.joda.time.DateTime;
 
 import java.math.BigDecimal;
 
-@ToString
+@Data
 public class ItemVO {
 
     private Integer id;
@@ -27,61 +28,15 @@ public class ItemVO {
     //商品描述图片的url
     private String imgUrl;
 
-    public Integer getId() {
-        return id;
-    }
+    //记录商品是否在秒杀活动中,以及对应的状态0：表示没有秒杀活动，1表示秒杀活动待开始，2表示秒杀活动进行中
+    private Integer promoStatus;
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+    //秒杀活动价格
+    private BigDecimal promoPrice;
 
-    public String getTitle() {
-        return title;
-    }
+    //秒杀活动ID
+    private Integer promoId;
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public BigDecimal getPrice() {
-        return price;
-    }
-
-    public void setPrice(BigDecimal price) {
-        this.price = price;
-    }
-
-    public Integer getStock() {
-        return stock;
-    }
-
-    public void setStock(Integer stock) {
-        this.stock = stock;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Integer getSales() {
-        return sales;
-    }
-
-    public void setSales(Integer sales) {
-        this.sales = sales;
-    }
-
-    public String getImgUrl() {
-        return imgUrl;
-    }
-
-    public void setImgUrl(String imgUrl) {
-        this.imgUrl = imgUrl;
-    }
-
-
+    //秒杀活动开始时间
+    private DateTime startDate;
 }
