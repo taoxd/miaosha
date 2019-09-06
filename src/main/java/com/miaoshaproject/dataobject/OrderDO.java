@@ -52,4 +52,6 @@ public class OrderDO {
      */
     private Double orderPrice;
 
+    private Integer promoId;
+
 }
